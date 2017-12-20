@@ -8,7 +8,7 @@ class Inbox extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
         <Toolbar />
         <Messages messages={messageData} />
       </div>
