@@ -5,12 +5,63 @@ import messageData from '../seeds/messages.json'
 
 
 class Inbox extends Component {
+  constructor(){
+    super()
+    this.state = {messageData:messageData}
+  }
+  emailClass = ()=>{
+    if(!this.state.messageData.read){
+      return 'row message unread'
+    }
+     else{
+      return 'row message read'
+    }
+  }
+  selectedClass = ()=>{
+    if(this.state.messageData.selected){
+      return " selected"
+    }
+  }
+  starredClass = ()=>{
+    if(this.state.messageData.starred){
+      return "star fa fa-star"
+    }
+    else{
+      return "star fa fa-star-o"
+      }
+  }
+
+
+  devLabel=(prop)=>{
+    if(prop.includes('dev')){
+      return <span class="label label-warning">dev</span>
+    }
+  }
+  personalLabel=(prop)=>{
+    if(prop.includes('personal')){
+      return <span class="label label-warning">personal</span>
+    }
+  }
+  gSchoolLabel=(prop)=>{
+    if(prop.includes('gschool')){
+      return <span class="label label-warning">gschool</span>
+    }
+  }
+  checkedBox=()=>{
+    if(this.state.messageData.selected){
+      return "checked"
+    }
+}
+
 
   render() {
     return (
       <div className="container">
         <Toolbar />
-        <Messages messages={messageData} />
+        <Messages
+           messages={this.state} emailClass={this.emailClass()}
+           selectedClass={this.selectedClass()}
+           starredClass={this.starredClass()} />
       </div>
     );
   }
