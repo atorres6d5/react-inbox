@@ -8,14 +8,15 @@ class Messages extends Component {
 
   render() {
     return (
-      <div className="row message unread">
+      <div>
         <div className="col-xs-11">
           {this.props.messages.messageData.map(letter=>{
+            console.log(letter);
             return <Message
               subject={letter}
-              emailClass={this.props.emailClass}
+              emailClass={this.props.emailClass(letter)}
               selectedClass={this.props.selectedClass}
-              starredClass={this.props.starredClass}
+              starredClass={this.props.starredClass(letter)}
               />
           })}
         </div>

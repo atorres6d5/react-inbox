@@ -9,21 +9,19 @@ class Inbox extends Component {
     super()
     this.state = {messageData:messageData}
   }
-  emailClass = ()=>{
-    if(!this.state.messageData.read){
-      return 'row message unread'
+  emailClass = (info) =>{
+    if(info.read){
+      return 'read'
     }
-     else{
-      return 'row message read'
-    }
+    else{return 'unread'}
   }
   selectedClass = ()=>{
     if(this.state.messageData.selected){
       return " selected"
     }
   }
-  starredClass = ()=>{
-    if(this.state.messageData.starred){
+  starredClass = (data)=>{
+    if(data.starred){
       return "star fa fa-star"
     }
     else{
@@ -59,9 +57,10 @@ class Inbox extends Component {
       <div className="container">
         <Toolbar />
         <Messages
-           messages={this.state} emailClass={this.emailClass()}
-           selectedClass={this.selectedClass()}
-           starredClass={this.starredClass()} />
+           messages={this.state}
+           emailClass={this.emailClass}
+           selectedClass={this.selectedClass}
+           starredClass={this.starredClass} />
       </div>
     );
   }
