@@ -28,7 +28,7 @@ const Message = ({subject, emailClass, selectedClass, starredClass}) => {
     <div className="col-xs-1">
       <div className="row">
         <div className="col-xs-2">
-          <input type="checkbox" />
+          <input type="checkbox" onClick/>
         </div>
         <div className="col-xs-2">
           <i className={starredClass}></i>

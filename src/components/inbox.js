@@ -7,13 +7,18 @@ import messageData from '../seeds/messages.json'
 class Inbox extends Component {
   constructor(){
     super()
-    this.state = {messageData:messageData}
+    this.state = {
+      messageData:messageData,
+      messagesRead:0
+    }
   }
   emailClass = (info) =>{
     if(info.read){
       return 'read'
     }
-    else{return 'unread'}
+    else{
+      return 'unread'
+    }
   }
   selectedClass = ()=>{
     if(this.state.messageData.selected){
@@ -55,7 +60,7 @@ class Inbox extends Component {
   render() {
     return (
       <div className="container">
-        <Toolbar />
+        <Toolbar readMessages={this.state.messagesRead}/>
         <Messages
            messages={this.state}
            emailClass={this.emailClass}

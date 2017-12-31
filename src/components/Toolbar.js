@@ -3,12 +3,13 @@ import React, {Component} from 'react';
 class Toolbar extends Component {
 
   render() {
+    console.log(this.props)
     return (
     <div>
       <div className="row toolbar">
         <div className="col-md-12">
           <p className="pull-right">
-            <span className="badge badge">2</span>
+            <span className="badge badge">{this.props.readMessages}</span>
             unread messages
           </p>
 
